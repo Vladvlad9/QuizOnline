@@ -37,6 +37,7 @@ def get_quiz(request):
 
         for question_obj in question_objs:
             data.append({
+                "id_u": question_obj.id_u,
                 "category": question_obj.category.category_name,
                 "question": question_obj.question,
                 "marks": question_obj.marks,
