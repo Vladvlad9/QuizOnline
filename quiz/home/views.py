@@ -1,5 +1,9 @@
 from pprint import pprint
 
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from .models import *
@@ -16,6 +20,11 @@ def home(request):
         return redirect(f"/quiz/?category={request.GET.get('category')}")
 
     return render(request, 'home/home.html', context)
+
+
+def index(request):
+
+    return render(request, 'home/index.html')
 
 
 def quiz(request):
@@ -56,3 +65,10 @@ def get_quiz(request):
         print(e)
 
     return HttpResponse("Something went wrong")
+
+
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
+
