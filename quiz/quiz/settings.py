@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,8 +27,8 @@ SECRET_KEY = 'django-insecure-h%c!uy#0=ws2p8^@&2t$(ndkmcq$5n%-gzqci9+(7z1yxz*ay5
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'users.User'
-
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = "login"
 
 # Application definition
 
@@ -40,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'django_extensions',
-    'users'
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,10 +56,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'quiz.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
